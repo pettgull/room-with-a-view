@@ -4,3 +4,4 @@
 # end
 
 class Profile::LoactionsController < ApplicationController
+end
