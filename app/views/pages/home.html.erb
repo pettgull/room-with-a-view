@@ -1,13 +1,9 @@
-<div class="container pt-4 row offset-3 justify-content-start">
-  <% @locations.each do |element| %>
-    <div class="card p-2 m-3" style="width: 18rem;">
-      <%= image_tag element.photo, height: 300, width: 300, class: "card-img-top" %>
-      <div class="card-body">
-        <h4 class="card-title"> <%= element.name %></h4>
-        <h5 class="card-title"> <%= element.address %></h5>
-        <h5 class="card-title"> <%= element.hourly_rate %></p>
-        <%= link_to 'Spectace the View', location_path(element.id), class: 'btn btn-success'  %>
-      </div>
-    </div>
-<% end %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/random);">
+  <div class="container">
+    <h1>Rooms with a view brings unique <strong>views</strong> to <strong>travelers and influencers</strong>!</h1>
+    <p>Explore cities with a new perspective</p>
+     <%= link_to 'Explore locations', locations_path, class: 'btn btn-flat'  %>
+  </div>
 </div>
+
+
