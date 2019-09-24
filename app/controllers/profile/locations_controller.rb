@@ -10,11 +10,11 @@ class Profile::LocationsController < ApplicationController
   def create
     @location = Location.new(strong_params_profile)
     @location.user = current_user
-      if @location.save
-        redirect_to location_path(@location)
-      else
-        render :new
-      end
+    if @location.save
+      redirect_to location_path(@location)
+    else
+      render :new
+    end
   end
 
   private
