@@ -8,11 +8,18 @@ class Profile::LocationsController < ApplicationController
   end
 
   def create
-    @location = Location.new
+    @location = Location.new(strong_params_profile)
+    @location.user = current_user
       if @location.save
-        # redirect_to location_path(@location)
+        redirect_to location_path(@location)
       else
-        render 'new'
+        render :new
       end
+  end
+
+  private
+
+  def strong_params_profile
+    params.require(:location).permit(:name, :description, :address, :hourly_rate, :photo, :start_date, :end_date, :commercial_use, :monument, :landscape, :user_id)
   end
 end
