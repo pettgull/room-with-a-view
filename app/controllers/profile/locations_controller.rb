@@ -3,4 +3,5 @@
 #   end
 # end
 
-class Profile::LoactionsController < ApplicationController
+class Profile::LocationsController < ApplicationController
+end
