@@ -11,4 +11,8 @@ class LocationsController < ApplicationController
       render 'new'
     end
   end
+
+  def index
+    @locations = Location.all
+  end
 end
