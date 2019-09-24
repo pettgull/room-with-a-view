@@ -1,23 +1,24 @@
 <div class="container">
   <div class="card-show">
     <div class="row">
-       <%= image_tag @location.photo, alt: "alttext" %>
-  <div class="card-show-infos col-6" >
-    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-      <h2><%= @location.name %></h2>
-      <p><%= @location.address %></p>
-      <div class="d-flex ">
-        <p><%= @location.start_date%></p>
-        <p class="px-5"><%= @location.end_date %></p>
+      <div class="col-8 img-fit">
+        <%= image_tag @location.photo, alt: "alttext",  class: "img-fit" %>
       </div>
-
-      <h2 class="card-show-pricing"><%= @location.hourly_rate %>NOK</h2>
-
+      <div class="col-4 main-div" >
+        <div class="container py-3">
+          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+        </div>
+        <div class="container p-3">
+          <h1><%= @location.name %></h1>
+          <h2><%= @location.address %></h2>
+        </div>
+        <div class="d-flex p-3 ">
+          <p><%= @location.start_date%></p>
+          <p class="px-5"><%= @location.end_date %></p>
+        </div>
+        <h2 class="p-3"><%= @location.hourly_rate %>NOK</h2>
+      </div>
     </div>
   </div>
-</div>
-
-
-
 
 
