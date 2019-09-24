@@ -1,0 +1,12 @@
+<h3>Add a new location</h3>
+<%= simple_form_for @locations do |l| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :photo %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.input :description %>
+  <%= .... :commercial_use %>
+  <%= .... :landscape %>
+  <%= .... :monument %>
+<% end %>
