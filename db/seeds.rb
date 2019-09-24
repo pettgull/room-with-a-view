@@ -14,7 +14,9 @@ puts '---------deleting all records---------------'
 Location.destroy_all
 User.destroy_all
 
-user = User.create(email: 'test@test.co', password: 'test123', first_name: 'Tess', last_name: 'Est')
+
+user = User.create(email: 'test@test.co', password: 'test123', first_name: 'Tess', last_name: 'Est', phone_number: '123456788', description: 'smooth slick and silky')
+
 
 def trueFalse
    rand(0..100) >= 50
