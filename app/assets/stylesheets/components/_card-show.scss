@@ -6,8 +6,14 @@
 
 .card-show > img {
   height: 200px;
-  width: 100%;
+  width: 300px;
   object-fit: cover;
+}
+
+.img-fit{
+  height:300px;
+  width:100%;
+  object-fit:cover;
 }
 
 .card-show h2 {
@@ -36,5 +42,17 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+.card-show-pricing{
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
+
+.main-div{
+  position: relative;
+  font-size: 30px
 }
 
