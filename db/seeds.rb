@@ -24,13 +24,14 @@ def hourly_rate
   rand(100..1000)
 end
 
+
 puts "------------seeding-----------"
 10.times do
   attributes = {
     name: Faker::Cannabis.brand,
     address: Faker::Address.full_address,
     hourly_rate: hourly_rate,
-    photo: 'https://loremflickr.com/300/300/view',
+    photo: 'https://source.unsplash.com/random',
     start_date: Date.today.to_s,
     end_date: (Date.today + rand(10..50)).to_s,
     description: Faker::LoremFlickr.image(size: "300x300", search_terms: ['view']),
