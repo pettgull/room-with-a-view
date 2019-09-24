@@ -1,6 +1,14 @@
-<% @locations.each do |location| %>
-<%= location.photo %>
-<%= location.name %>
-<%= location.address %>
-<%= location.hourly_rate %>
+<div class="container pt-4 row offset-3 justify-content-start">
+  <% @locations.each do |element| %>
+    <div class="card p-2 m-3" style="width: 18rem;">
+      <%= image_tag element.photo, height: 300, width: 300, class: "card-img-top" %>
+      <div class="card-body">
+        <h4 class="card-title"> <%= element.name %></h4>
+        <h5 class="card-title"> <%= element.address %></h5>
+        <h5 class="card-title"> <%= element.hourly_rate %></p>
+        <%= link_to 'Spectace the View', location_path(element.id), class: 'btn btn-success'  %>
+      </div>
+    </div>
 <% end %>
+</div>
+
