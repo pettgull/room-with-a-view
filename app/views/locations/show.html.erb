@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="card-show">
+    <div class="row">
+       <%= image_tag @location.photo, alt: "alttext" %>
+  <div class="card-show-infos col-6" >
+    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+      <h2><%= @location.name %></h2>
+      <p><%= @location.address %></p>
+      <div class="d-flex ">
+        <p><%= @location.start_date%></p>
+        <p class="px-5"><%= @location.end_date %></p>
+      </div>
+
+      <h2 class="card-show-pricing"><%= @location.hourly_rate %>NOK</h2>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
