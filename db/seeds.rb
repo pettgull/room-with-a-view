@@ -44,7 +44,7 @@ user = User.create(email: 'test@test.co', password: 'test123', first_name: 'Tess
     name: Faker::Cannabis.brand,
     address: Faker::Address.full_address,
     hourly_rate: hourly_rate,
-    photo: pictures[counter],
+    remote_photo_url: pictures[counter],
     start_date: Date.today.to_s,
     end_date: (Date.today + rand(10..50)).to_s,
     description: Faker::LoremFlickr.image(size: "300x300", search_terms: ['view']),
