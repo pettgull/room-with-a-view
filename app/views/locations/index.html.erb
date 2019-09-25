@@ -1,5 +1,5 @@
 <div class="container-index">
-  <div class="card-container pt-4 row offset-3 justify-content-start"> <!-- // pt-4 row offset-3 justify-content-start -->
+  <div class="card-container pt-4 ml-0 row offset-3 justify-content-start"> <!-- // pt-4 row offset-3 justify-content-start -->
     <% @locations.each do |element| %>
       <div class="card p-2 m-3" style="width: 18rem;">
         <%= cl_image_tag(element.photo, height: 300, width: 300, class: "card-img-top") %>
@@ -14,7 +14,7 @@
   </div>
     <div
     id="map"
-    style="width: 80%;"
+    style="width: 60%;"
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     ></div>
