@@ -1,8 +1,8 @@
 class LocationsController < ApplicationController
 
   def index
-    # @locations = Location.all
     @locations = Location.geocoded
+    # @locations = Location.all
 
     @markers = @locations.map do |location|
       {
