@@ -40,3 +40,16 @@
   color: white;
 }
 
+.btn-light {
+  background: white;
+  color: #0B3948;;
+  padding: 8px 24px;
+  border-radius: 4px;
+  border: 1px solid #0B3948;
+  margin: 0 5px;
+}
+
+.btn-light:hover {
+  border: 1px solid #62BBC1;
+  color: #62BBC1;
+}
