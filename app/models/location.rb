@@ -5,4 +5,5 @@ class Location < ApplicationRecord
   validates :hourly_rate, presence: true, numericality: { only_integer: true }
   validates :photo, presence: true
   validates :description, presence: true
+  mount_uploader :photo, PhotoUploader
 end
