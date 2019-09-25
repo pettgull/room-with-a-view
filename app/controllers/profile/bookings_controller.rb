@@ -17,6 +17,7 @@ class Profile::BookingsController < ApplicationController
     @booking = Booking.new(strong_params)
     @booking.user = current_user
     @booking.location = params[:location_id]
+    raise
     if @booking.save
       raise
       redirect_to bookings_path(@booking), notice: 'You requested a new booking'

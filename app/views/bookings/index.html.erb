@@ -1,0 +1,15 @@
+<ul class="list-group list-group-flush">
+  <% @bookings.each do |booking| %>
+  <li class="list-group-item">
+    <h2> <%= booking.location.name %> </h2>
+    <h3> <%= booking.location.address %> </h3>
+    <div class="d-flex">
+      <%= booking.location.user.first_name %>
+      <%= booking.location.user.last_name %>
+    </div>
+    <%= booking.location.address %>
+
+  </li>
+  <% end %>
+</ul>
+

@@ -2,7 +2,7 @@
   <div class="card-show">
     <div class="row">
       <div class="col-8 img-fit">
-        <%= image_tag @location.photo, alt: "alttext",  class: "img-fit" %>
+        <%=cl_image_tag @location.photo, alt: "alttext",  class: "img-fit" %>
       </div>
       <div class="col-4 main-div" >
         <div class="container py-3">
@@ -27,9 +27,8 @@
       <div class="row justify-content-center">
         <h3>Make a reservation</h3>
       </div>
-      <%= simple_form_for [:profile, @booking] do |f| %>
+      <%= simple_form_for [@location, @booking] do |f| %>
       <div class="col-auto">
-        <%= f.association :location_id, params[:id] %>
         <%= f.input :start_date %>
         <%= f.input :end_date %>
         <div class="row justify-content-center">

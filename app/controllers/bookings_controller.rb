@@ -3,7 +3,7 @@ class BookingsController < ApplicationController
 
   def index
     #should display all the bookings for a specific user, not all
-    @bookings = Bookings.all
+    @bookings = Booking.where("user_id = ?", current_user)
   end
 
   def show
@@ -15,9 +15,11 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(strong_params)
-
+    @booking.user = current_user
+    location = Location.find(params[:location_id])
+    @booking.location = location
     if @booking.save
-      redirect_to bookings_path(@booking), notice: 'You requested a new booking'
+      redirect_to booking_path(@booking), notice: 'You requested a new booking'
     else
       render :new
     end
@@ -25,14 +27,13 @@ class BookingsController < ApplicationController
 
   private
 
-  def calculate_price
-    rate = params[:rate]
-    time = (params[:start_date] - params[:start_date])
+  def calculate_price(rate, start_date, end_date)
+    time = end_date - start_date
     return rate * time
   end
 
   def set_booking
-    @booking = Booking.find(parmas[:id])
+    @booking = Booking.find(params[:id])
   end
 
   def strong_params
