@@ -33,7 +33,7 @@ puts "------------seeding-----------"
     name: Faker::Cannabis.brand,
     address: Faker::Address.full_address,
     hourly_rate: hourly_rate,
-    photo: 'https://source.unsplash.com/random',
+    photo: 'https://source.unsplash.com/random/landscape?',
     start_date: Date.today.to_s,
     end_date: (Date.today + rand(10..50)).to_s,
     description: Faker::LoremFlickr.image(size: "300x300", search_terms: ['view']),

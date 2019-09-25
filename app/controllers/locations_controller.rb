@@ -7,5 +7,4 @@ class LocationsController < ApplicationController
     @location = Location.find(params[:id])
     @booking = Booking.new
   end
-
 end
