@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <h3>Make a reservation</h3>
+  </div>
+
+
+
+  <%= form_with(model: booking, local: true ) do |f| %>
+  <div class="col-auto">
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
+    <div class="row justify-content-center">
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  </div>
+  <% end %>
+  </div>
