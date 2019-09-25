@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   resources :bookings, only: [:index]
   namespace :profile do
     resources :locations, except: [:show, :index]
-    resources :bookings, only: [:index, :show]
+    resources :bookings
   end
 end
