@@ -11,12 +11,21 @@ require 'faker'
 puts "user count  = #{User.count}"
 puts "Location count  = #{Location.count}"
 puts '---------deleting all records---------------'
+Booking.destroy_all
 Location.destroy_all
 User.destroy_all
 
-
-user = User.create(email: 'test@test.co', password: 'test123', first_name: 'Tess', last_name: 'Est', phone_number: '123456788', description: 'smooth slick and silky')
-
+pictures = ['https://res.cloudinary.com/dswkxjcbj/image/upload/v1569412062/andre-benz-RAXQkgmyrcA-unsplash_jwbjde.jpg',
+            'https://res.cloudinary.com/dswkxjcbj/image/upload/v1569412063/rooms-with-amazing-view-38__880_i4gabh.jpg',
+            'https://res.cloudinary.com/dswkxjcbj/image/upload/v1569412063/Room_with_a_view_Sentosa_qa9ecy.jpg',
+            'https://res.cloudinary.com/dswkxjcbj/image/upload/v1569412063/picture_of_a_hut_befc3f.jpg',
+            'https://res.cloudinary.com/dswkxjcbj/image/upload/v1569412063/marine-fishingboats-ireland_phwk52.jpg',
+            'https://res.cloudinary.com/dswkxjcbj/image/upload/v1569412062/justaview_pblqf7.jpg',
+            'https://res.cloudinary.com/dswkxjcbj/image/upload/v1569412062/hernan-sanchez-kEFrAFKY6Sk-unsplash_q7n2be.jpg',
+            'https://res.cloudinary.com/dswkxjcbj/image/upload/v1569412062/jeremystoweroflove_xd1y8c.jpg',
+            'https://res.cloudinary.com/dswkxjcbj/image/upload/v1569412062/hello-lightbulb-YC8qqp50BdA-unsplash_azm5hi.jpg',
+            'https://res.cloudinary.com/dswkxjcbj/image/upload/v1569412061/fishingboats_zekp3o.jpg'
+]
 
 def trueFalse
    rand(0..100) >= 50
@@ -26,14 +35,16 @@ def hourly_rate
   rand(100..1000)
 end
 
+counter = 0
 
 puts "------------seeding-----------"
+user = User.create(email: 'test@test.co', password: 'test123', first_name: 'Tess', last_name: 'Est', phone_number: '123456788', description: 'smooth slick and silky')
 10.times do
   attributes = {
     name: Faker::Cannabis.brand,
     address: Faker::Address.full_address,
     hourly_rate: hourly_rate,
-    photo: 'https://source.unsplash.com/random/landscape?',
+    photo: pictures[counter],
     start_date: Date.today.to_s,
     end_date: (Date.today + rand(10..50)).to_s,
     description: Faker::LoremFlickr.image(size: "300x300", search_terms: ['view']),
@@ -43,6 +54,8 @@ puts "------------seeding-----------"
     user_id: user.id
   }
   Location.create(attributes)
+  counter += 1
+  puts counter
 end
 
 puts "---------seeding done--------"
