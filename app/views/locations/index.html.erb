@@ -1,7 +1,7 @@
 <div class="container pt-4 row offset-3 justify-content-start">
   <% @locations.each do |element| %>
     <div class="card p-2 m-3" style="width: 18rem;">
-      <%= image_tag element.photo, height: 300, width: 300, class: "card-img-top" %>
+      <%= cl_image_tag(element.photo, width: 300, height: 300, class: "card-img-top") %>
       <div class="card-body">
         <h4 class="card-title"> <%= element.name %></h4>
         <h5 class="card-title"> <%= element.address %></h5>
