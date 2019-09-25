@@ -1,0 +1,14 @@
+<div class="container">
+  <h1> <%= @booking.location.name %> </h1>
+  <h2> <%= @booking.location.address %></h2>
+  <div class="d-flex">
+    <p><%= @booking.location.user.first_name %> </p>
+    <p> <%= @booking.location.user.last_name %></p>
+  </div>
+  <div class="d-flex">
+    <p><%= @booking.start_date %> </p>
+    <p> <%= @booking.end_date %> </p>
+  </div>
+</div>
+
+<%= link_to 'back to bookings', bookings_path %>

@@ -27,9 +27,8 @@
       <div class="row justify-content-center">
         <h3>Make a reservation</h3>
       </div>
-      <%= simple_form_for [:profile, @booking] do |f| %>
+      <%= simple_form_for [@location, @booking] do |f| %>
       <div class="col-auto">
-        <%= f.association :location_id, params[:id] %>
         <%= f.input :start_date %>
         <%= f.input :end_date %>
         <div class="row justify-content-center">
