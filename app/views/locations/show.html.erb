@@ -1,47 +1,68 @@
-<div class="container">
-  <div class="card-show">
-    <div class="row">
-      <div class="col-8 img-fit">
-        <%=cl_image_tag @location.photo, alt: "alttext",  class: "img-fit" %>
-      </div>
-      <div class="col-4 main-div" >
-        <div class="container py-3">
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-        </div>
-        <div class="container p-3">
-          <h1><%= @location.name %></h1>
-          <h2><%= @location.address %></h2>
-        </div>
-        <div class="d-flex p-3 ">
-          <p><%= @location.start_date%></p>
-          <p class="px-5"><%= @location.end_date %></p>
-        </div>
-        <h2 class="p-3"><%= @location.hourly_rate %>NOK</h2>
-      </div>
-    </div>
+<div class="row mt-3">
+  <div class="col-12">
+    <%=cl_image_tag @location.photo, alt: "alttext",  class: "img-cover" %>
   </div>
-
-
-  <div class="container">
-    <div class="container">
+</div>
+<div class="row pt-3 ml-5 main">
+  <div class="col-6 container">
+    <div class="d-flex justify-content-center">
+      <div class="container">
+        <div class="info-card d-flex">
+          <div class="info">
+            <h2><%= @location.name %></h2>
+            <h3><%= @location.address %></h3>
+            <div class="container p-0">
+              <p><%= @location.description %></p>
+            </div>
+          </div>
+          <div class="avatar">
+           <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+         </div>
+       </div>
+       <div
+       id="map"
+       style="width: 90%"
+       data-markers="<%= @markers.to_json %>"
+       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+     </div>
+   </div>
+ </div>
+ <div class="col-6">
+  <p>available </p>
+  <div id="availability" class="d-flex">
+    <p> from: <%= @location.start_date%></p>
+    <p class="px-2 m-0"> to: <%= @location.end_date %></p>
+  </div>
+  <h2 class=""><%= @location.hourly_rate %>NOK</h2>
+  <div class="form">
+    <%= simple_form_for [@location, @booking] do |f| %>
+    <div class="col-auto">
+      <%= f.input :start_date %>
+      <%= f.input :end_date %>
       <div class="row justify-content-center">
-        <h3>Make a reservation</h3>
+        <%= f.button :submit, class: 'btn btn-primary' %>
       </div>
-      <%= simple_form_for [@location, @booking] do |f| %>
-      <div class="col-auto">
-        <%= f.input :start_date %>
-        <%= f.input :end_date %>
-        <div class="row justify-content-center">
-          <%= f.button :submit, class: 'btn btn-primary' %>
-        </div>
-        <% end %>
-      </div>
-        <div
-      id="map"
-      style="width: 60%;"
-      data-markers="<%= @markers.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-      ></div>
     </div>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-6">
+      <div class="container p-3">
+      </div>
+      <div class="col-6">
+        <h3 class="text-center pt-3">make a reservation</h3>
+        <div class="container">
+
+        </div>
+      </div>
+    </div>
+
+
+
+
 
 

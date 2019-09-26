@@ -58,7 +58,7 @@ user = User.create(email: 'test@test.co', password: 'test123', first_name: 'Tess
     remote_photo_url: pictures[counter],
     start_date: Date.today.to_s,
     end_date: (Date.today + rand(10..50)).to_s,
-    description: Faker::LoremFlickr.image(size: "300x300", search_terms: ['view']),
+    description: Faker::Restaurant.review,
     commercial_use: trueFalse,
     monument: trueFalse,
     landscape: trueFalse,
