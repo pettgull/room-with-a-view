@@ -1,23 +1,29 @@
 <div class="container bg-secondary text-light text-shadow mt-3 p-3 rounded">
-  <h1> <%= @booking.location.name %> </h1>
-  <h2> <%= @booking.location.address %></h2>
-  <div class="d-flex">
-    <p><%= @booking.location.user.first_name %> </p>
-    <p><%= @booking.location.user.last_name %></p>
-  </div>
-  <div class="d-flex">
-    <p><%= @booking.start_date %> </p>
-    <p> <%= @booking.end_date %> </p>
-  </div>
-  <% if current_user == @booking.location.user %>
-  <% if @booking.accepted %>
-    <div class="text-white badge badge-success">
-      <h3>booking confirmed</h3>
+  <div class="row">
+    <div class="col-8">
+      <h1> <%= @booking.location.name %> </h1>
+      <h2> <%= @booking.location.address %></h2>
+      <div class="d-flex">
+        <p><%= @booking.location.user.first_name %> </p>
+        <p><%= @booking.location.user.last_name %></p>
+      </div>
+      <div class="d-flex">
+        <p><%= @booking.start_date %> </p>
+        <p> <%= @booking.end_date %> </p>
+      </div>
+      <% if current_user == @booking.location.user %>
+      <% if @booking.accepted %>
+      <div class="text-white badge badge-success">
+        <h3>booking confirmed</h3>
+      </div>
+      <% else %>
+      <%= link_to 'Accept reservation', booking_path(@booking), method: :patch, local: true, class: 'btn btn-info'  %>
+      <% end %>
+      <% end %>
     </div>
-  <% else %>
-    <%= link_to 'Accept reservation', booking_path(@booking), method: :patch, local: true, class: 'btn btn-info'  %>
-  <% end %>
-<% end %>
+
+  </div>
+
 </div>
 
 

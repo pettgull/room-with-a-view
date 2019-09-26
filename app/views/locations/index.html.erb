@@ -1,24 +1,33 @@
 <div class="index">
   <div class="cards-container">
-    <h4 class="title">More Than <%= Location.count %> Viuz, explore them</h4>
-    <% @locations.each do |element| %>
-    <div class="single-card">
-      <div class="single-card-image">
-        <!-- <img src="" alt="bob"> -->
-        <%= cl_image_tag(element.photo)%>
-        <!-- <img class="index-card-image" style="background-image: url(<%= cl_image_path(element.photo)%>)"> -->
+    <div class="search-container">
+      <div class="search-bar">
+      <%= form_tag locations_path, method: :get do %>
+      <%= text_field_tag :query,
+      params[:query],
+      class: "form-control", placeholder: "Find a location" %>
       </div>
-      <div class="single-card-content">
-        <h4 class="card-title"> <%= element.name %></h4>
-        <h5 class="card-adress"> <%= element.address %></h5>
-        <h5 class="card-hourly-rate"> <%= element.hourly_rate %> euros</h5>
-        <%= link_to 'Details', location_path(element.id), class: 'btn btn-flat'  %>
+      <%= submit_tag "Search", class: "btn btn-flat" %>
       </div>
+      <% end %>
+
+      <h4 class="title">More Than <%= Location.count %> Viuz, explore them</h4>
+      <% @locations.each do |element| %>
+      <div class="single-card">
+        <div class="single-card-image">
+          <%= cl_image_tag(element.photo)%>
+        </div>
+        <div class="single-card-content">
+          <h4 class="card-title"> <%= element.name %></h4>
+          <h5 class="card-adress"> <%= element.address %></h5>
+          <h5 class="card-hourly-rate"> <%= element.hourly_rate %> euros</h5>
+          <%= link_to 'Details', location_path(element.id), class: 'btn btn-flat'  %>
+        </div>
+      </div>
+      <% end %>
     </div>
-    <% end %>
+    <div id="map"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
-  <div id="map"
-  data-markers="<%= @markers.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-</div>
 </div>
