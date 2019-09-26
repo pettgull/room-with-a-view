@@ -1,58 +1,104 @@
-.card-show {
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-}
+// .index-card-container {
+//   display: flex;
+//   background-color: #fff;
 
-.card-show > img {
-  height: 200px;
-  width: 300px;
-  object-fit: cover;
-}
+// }
 
-.img-fit{
-  height:300px;
-  width:100%;
-  object-fit:cover;
-}
+// .card {
+//   display: flex;
+//   border: 1px solid rgb(235, 235, 235);
+//   border-radius: 4px;
+//   padding: 10px;
+//   margin: 10px;
+// }
 
-.card-show h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.card-show p {
-  font-size: 12px;
-  opacity: .7;
-  margin: 0;
-}
+// .index-card-image {
+//   background-size: cover;
+//   border-radius:4px;
+//   height: 100px;
+// }
 
 
-.card-show .card-show-infos {
-  padding: 16px;
+// // .card-body {
+// //   display: flex
+// // }
+
+
+.index {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  position: relative;
+  background-color: white;
 }
 
-.card-show-infos .card-show-user {
-  position: absolute;
-  right: 16px;
-  top: -20px;
-  width: 40px;
+.cards-container {
+  width: 100vw;
+  margin: 0px 10px 10px 10px;
+  padding: 0px 10px 10px 10px;
 }
 
-.card-show-pricing{
-  position: absolute;
-  right: 16px;
-  top: -20px;
-  width: 40px;
+.single-card {
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  width: 100%;
+  height: 250px;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid rgb(235, 235, 235);
+  border-radius: 4px;
+  margin-bottom: 10px;
+  padding: 10px;
 }
 
-.main-div{
-  position: relative;
-  font-size: 30px
+.single-card-image{
+  height:100%;
+  width : 50%;
+  margin: 4px;
+}
+
+.single-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.single-card-content {
+ display: flex;
+ width : 50%;
+ flex-direction: column;
+ margin: 4px;
+ padding-left: 15px;
+
+}
+
+.single-card-content h4 {
+  color : rgb(72, 72, 72);
+  font-size: 20px;
+}
+
+.single-card-content h5 {
+  color : rgb(72, 72, 72);
+  font-size: 16px;
+}
+
+.single-card-content a {
+  margin: 0 auto;
+  width: 150px;
+}
+
+.single-card-content .card-hourly-rate {
+margin-top: 10px;
+font-weight: bold;
+color: #0B3948;
+margin-bottom : 40px;
+}
+
+#map {
+  width: 100vw;
+  border: 1px solid rgb(235, 235, 235);
+}
+.title {
+  color : rgb(72, 72, 72);
+  text-align: center;
+  font-weight: bold;
+  padding: 20px;
 }
 
