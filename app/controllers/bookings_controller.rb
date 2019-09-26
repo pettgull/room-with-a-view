@@ -1,9 +1,12 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show]
+  before_action :set_booking, only: [:show, :edit, :update]
 
   def index
-    #should display all the bookings for a specific user, not all
+    # should display all the bookings for a specific user, not all
     @bookings = Booking.where("user_id = ?", current_user)
+    locations = Location.where(:user_id => current_user)
+    @loction_bookings = Booking.where(:location_id => locations)
+    @booking = Booking.new
   end
 
   def show
@@ -23,6 +26,16 @@ class BookingsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+    raise
+  end
+
+  def update
+    # @booking.accepted = params[:booking]
+    @booking.accepted = true
+    @booking.save
   end
 
   private
