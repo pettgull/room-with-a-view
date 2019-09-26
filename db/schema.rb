@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_25_092232) do
+ActiveRecord::Schema.define(version: 2019_09_26_085959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 2019_09_25_092232) do
     t.date "start_date"
     t.date "end_date"
     t.integer "total_price"
-    t.boolean "accepted"
-    t.boolean "cancelled"
+    t.boolean "accepted", default: false
+    t.boolean "cancelled", default: false
     t.bigint "user_id"
     t.bigint "location_id"
     t.datetime "created_at", null: false

@@ -1,15 +1,48 @@
-<ul class="list-group list-group-flush">
-  <% @bookings.each do |booking| %>
-  <li class="list-group-item">
-    <h2> <%= booking.location.name %> </h2>
-    <h3> <%= booking.location.address %> </h3>
-    <div class="d-flex">
-      <%= booking.location.user.first_name %>
-      <%= booking.location.user.last_name %>
-    </div>
-    <%= booking.location.address %>
 
-  </li>
-  <% end %>
-</ul>
 
+<div class="container pt-2">
+  <div class="row">
+    <dig class="col-6">
+      <h2>Bookings on your locations</h2>
+     <ul class="list-group list-group-flush">
+      <% @loction_bookings.each do |booking| %>
+      <li class="list-item p-2">
+        <div class="card-product">
+          <%= cl_image_tag(booking.location.photo, ) %>
+          <div class="card-product-infos">
+            <h2> <%= booking.location.name%> </h2>
+            <p><%= booking.location.address %></p>
+            <div class="d-flex">
+              <%= booking.location.user.first_name %>
+              <%= booking.location.user.last_name %>
+            </div>
+          </div>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+
+  </dig>
+  <div class="col-6">
+    <h2> Your bookings</h2>
+    <ul class="list-group list-group-flush">
+      <% @bookings.each do |booking| %>
+      <li class="list-item p-2 ">
+        <div class="card-product">
+          <%= cl_image_tag(booking.location.photo, ) %>
+          <div class="card-product-infos">
+            <h2> <%= link_to booking.location.name, booking_path(booking), class: "link" %> </h2>
+            <p><%= booking.location.address %></p>
+            <div class="d-flex">
+              <%= booking.location.user.first_name %>
+              <%= booking.location.user.last_name %>
+            </div>
+
+          </div>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+</div>
