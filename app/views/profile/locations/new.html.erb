@@ -1,21 +1,22 @@
-<div class="container">
+<div class="add-location">
   <div class="row justify-content-center">
-    <h3>Add a new location</h3>
+    <h1>Add your view</h1>
   </div>
-  <%= simple_form_for [:profile, @location] do |f| %>
-  <div class="col-auto"> <%= f.input :name %>
-    <%= f.input :address %>
-    <%= f.input :photo %>
-    <%= f.input :photo_cache, as: :hidden %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
-    <%= f.input :description %>
-    <%= f.input :hourly_rate %>
-    <%= f.input :commercial_use %>
-    <%= f.input :monument %>
-    <%= f.input :landscape %>
-    <div class="row justify-content-center">
-    <%= f.button :submit, class: 'btn btn-flat' %>
+    <%= simple_form_for [:profile, @location] do |f| %>
+      <%= f.input :name, placeholder: "Add the name of your view"%>
+      <%= f.input :address, placeholder: "Add your views address" %>
+      <%= f.input :photo %>
+      <%= f.input :photo_cache, as: :hidden %>
+      <%= f.input :start_date, label: "From when can you rent out your view" %>
+      <%= f.input :end_date, label: "Until when can you rent out your view" %>
+      <%= f.input :description, placeholder: "Add a description of your view" %>
+      <%= f.input :hourly_rate, placeholder: "Add your rate"%>
+      <%= f.input :commercial_use %>
+      <%= f.input :monument %>
+      <%= f.input :landscape %>
+      <div class="row justify-content-center">
+        <%= f.button :submit, class: 'btn btn-flat' %>
+      </div>
+    <% end %>
   </div>
-  <% end %>
-  </div>
+</div>
