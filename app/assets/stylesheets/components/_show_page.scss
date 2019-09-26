@@ -1,0 +1,13 @@
+.show-items {
+  flex: 0 0 50%;
+}
+#show-container {
+  position: sticky;
+  top: 0;
+}
+
+.container-show {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
