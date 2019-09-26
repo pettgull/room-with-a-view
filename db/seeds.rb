@@ -27,6 +27,17 @@ pictures = ['https://res.cloudinary.com/dswkxjcbj/image/upload/v1569412062/andre
             'https://res.cloudinary.com/dswkxjcbj/image/upload/v1569412061/fishingboats_zekp3o.jpg'
 ]
 
+address = ['nordlysveien 10, Oslo',
+             'Myrerskogveien 80, Oslo',
+             'voksenkollveien 2, Oslo',
+             'nordre skansemyren 10, Bergen',
+             'Via Panisperna, 236, 00184 Roma RM, Italia',
+             'Via Faustina, 25019 Sirmione BS, Italia',
+             '6 Place de la Contrescarpe, 75005 Paris, Frankrike',
+             '2-28 Rue de Gratteloup, 13013 Marseille, Frankrike',
+             'Realgenossenschaft Männis Oberterzen, Ringstrasse, 8884 Oberterzen, Sveits',
+             'Wilson St, Middlesbrough TS1 1LA, Storbritannia'
+]
 def trueFalse
    rand(0..100) >= 50
 end
@@ -42,7 +53,7 @@ user = User.create(email: 'test@test.co', password: 'test123', first_name: 'Tess
 10.times do
   attributes = {
     name: Faker::Cannabis.brand,
-    address: Faker::Address.full_address,
+    address: address[counter],
     hourly_rate: hourly_rate,
     remote_photo_url: pictures[counter],
     start_date: Date.today.to_s,

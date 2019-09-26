@@ -1,35 +1,12 @@
 
 
-<div class="container pt-2">
-  <div class="row">
-    <dig class="col-6">
-      <h2>Bookings on your locations</h2>
-     <ul class="list-group list-group-flush">
+<div class="m-3 pt-2">
+  <div class="row d-flex justify-content-around">
+    <dig class="col-5 bg-dark rounded m-1 pb-2">
+      <h2 class="text-center text-light">Bookings on your locations</h2>
       <% @loction_bookings.each do |booking| %>
-      <li class="list-item p-2">
-        <div class="card-product">
-          <%= cl_image_tag(booking.location.photo, ) %>
-          <div class="card-product-infos">
-            <h2> <%= booking.location.name%> </h2>
-            <p><%= booking.location.address %></p>
-            <div class="d-flex">
-              <%= booking.location.user.first_name %>
-              <%= booking.location.user.last_name %>
-            </div>
-          </div>
-        </div>
-      </li>
-      <% end %>
-    </ul>
-
-  </dig>
-  <div class="col-6">
-    <h2> Your bookings</h2>
-    <ul class="list-group list-group-flush">
-      <% @bookings.each do |booking| %>
-      <li class="list-item p-2 ">
-        <div class="card-product">
-          <%= cl_image_tag(booking.location.photo, ) %>
+        <div class="card-product rounded mt-3">
+          <%= cl_image_tag(booking.location.photo, class: 'rounded' ) %>
           <div class="card-product-infos">
             <h2> <%= link_to booking.location.name, booking_path(booking), class: "link" %> </h2>
             <p><%= booking.location.address %></p>
@@ -37,12 +14,48 @@
               <%= booking.location.user.first_name %>
               <%= booking.location.user.last_name %>
             </div>
-
+            <div>
+              <% if booking.accepted %>
+                <div class="text-white badge badge-success">
+                  <p>Confirmed</p>
+                </div>
+                <% else %>
+                <div class="text-dark badge badge-info">
+                  <p> Pending </p>
+                </div>
+              <% end %>
+            </div>
           </div>
         </div>
-      </li>
       <% end %>
-    </ul>
+
+  </dig>
+  <div class="col-5 bg-dark rounded m-1 pb-2">
+    <h2 class="text-center text-light"> Your bookings</h2>
+      <% @bookings.each do |booking| %>
+        <div class="card-product rounded mt-3">
+          <%= cl_image_tag(booking.location.photo, class: "rounded" ) %>
+          <div class="card-product-infos">
+            <h2> <%= link_to booking.location.name, booking_path(booking), class: "link" %> </h2>
+            <p><%= booking.location.address %></p>
+            <div class="d-flex">
+              <%= booking.location.user.first_name %>
+              <%= booking.location.user.last_name %>
+            </div>
+            <div>
+              <% if booking.accepted %>
+                <div class="text-white badge badge-success">
+                  <p>Confirmed</p>
+                </div>
+                <% else %>
+                <div class="text-dark badge badge-info">
+                  <p> Pending </p>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
   </div>
 </div>
 </div>
