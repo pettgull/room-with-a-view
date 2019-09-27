@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <div class="index">
   <div class="cards-container">
     <h4 class="title">More Than <%= Location.count %> Viuz, explore them</h4>
@@ -34,4 +35,27 @@
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
+=======
+<div class="container-index">
+  <div class="card-container pt-4 ml-0 row offset-3 justify-content-start"> <!-- // pt-4 row offset-3 justify-content-start -->
+    <% @locations.each do |element| %>
+      <div class="card p-2 m-3" style="width: 18rem;">
+        <%= cl_image_tag(element.photo, height: 300, width: 300, class: "card-img-top") %>
+        <div class="card-body">
+          <h4 class="card-title"> <%= element.name %></h4>
+          <h5 class="card-title"> <%= element.address %></h5>
+          <h5 class="card-title"> <%= element.hourly_rate %></h5>
+          <%= link_to 'Details', location_path(element.id), class: 'btn btn-flat'  %>
+        </div>
+      </div>
+  <% end %>
+  </div>
+
+    <div
+    id="map"
+    style="width: 60%;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    ></div>
+>>>>>>> Stashed changes
 </div>
