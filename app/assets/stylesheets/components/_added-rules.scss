@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 40px 0;
+  margin: 50px 0;
 
   & input {
     width: 40vw;
@@ -14,7 +14,7 @@
   padding-left: .40rem;
 }
 
-.form-control-label {
+.form-control-label, label.file {
   padding-left: .40rem;
 }
 
