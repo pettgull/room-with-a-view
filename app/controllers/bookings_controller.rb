@@ -12,6 +12,11 @@ class BookingsController < ApplicationController
   def show
   end
 
+  # def is_available
+  #   where = "location = ? AND bookings.start_date <= ? AND bookings.end_date >= ?"
+  #   Location.joins(:bookings).where(where, params[end_date], params[start_date]).any?
+  # end
+
   def new
     @booking = Booking.new
   end
@@ -21,6 +26,17 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     location = Location.find(params[:location_id])
     @booking.location = location
+
+    if @booking.start_date < Date.today
+      flash[:notice] = "That isn't possible"
+      render :index
+    # elsif location.available?
+    #   @booking.save
+    else
+      flash[:notice] = "Sorry, the location is already booked."
+      render :index
+    end
+
     if @booking.save
       redirect_to booking_path(@booking), notice: 'You requested a new booking'
     else
