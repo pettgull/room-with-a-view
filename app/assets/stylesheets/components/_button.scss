@@ -53,3 +53,17 @@
   border: 1px solid #62BBC1;
   color: #62BBC1;
 }
+
+.btn-flat-home {
+  color: white;
+  border: 1px solid white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #0B3948;
+  transition: background 0.3s ease;
+}
+
+.btn-flat-home:hover {
+  background: #62BBC1;
+  color: white;
+}
