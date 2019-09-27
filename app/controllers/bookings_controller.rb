@@ -29,12 +29,12 @@ class BookingsController < ApplicationController
 
     if @booking.start_date < Date.today
       flash[:notice] = "That isn't possible"
-      render :index
+      render :new
     # elsif location.available?
     #   @booking.save
     else
       flash[:notice] = "Sorry, the location is already booked."
-      render :index
+      render :new
     end
 
     if @booking.save
