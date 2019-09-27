@@ -31,12 +31,12 @@ address = ['nordlysveien 10, Oslo',
              'Myrerskogveien 80, Oslo',
              'voksenkollveien 2, Oslo',
              'nordre skansemyren 10, Bergen',
-             'Via Panisperna, 236, 00184 Roma RM, Italia',
-             'Via Faustina, 25019 Sirmione BS, Italia',
-             '6 Place de la Contrescarpe, 75005 Paris, Frankrike',
-             '2-28 Rue de Gratteloup, 13013 Marseille, Frankrike',
-             'Realgenossenschaft Männis Oberterzen, Ringstrasse, 8884 Oberterzen, Sveits',
-             'Wilson St, Middlesbrough TS1 1LA, Storbritannia'
+             'Via Panisperna, 236, 00184 Roma RM, Italy',
+             'Via Faustina, 25019 Sirmione BS, Italy',
+             '6 Place de la Contrescarpe, 75005 Paris, France',
+             '2-28 Rue de Gratteloup, 13013 Marseille, France',
+             'Realgenossenschaft Männis Oberterzen, Ringstrasse, 8884 Oberterzen, Switzerland',
+             'Wilson St, Middlesbrough TS1 1LA, Great Britain'
 ]
 def trueFalse
    rand(0..100) >= 50
@@ -58,7 +58,7 @@ user = User.create(email: 'test@test.co', password: 'test123', first_name: 'Tess
     remote_photo_url: pictures[counter],
     start_date: Date.today.to_s,
     end_date: (Date.today + rand(10..50)).to_s,
-    description: Faker::LoremFlickr.image(size: "300x300", search_terms: ['view']),
+    description: Faker::Restaurant.review,
     commercial_use: trueFalse,
     monument: trueFalse,
     landscape: trueFalse,

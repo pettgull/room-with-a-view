@@ -1,0 +1,30 @@
+.search-container{
+  padding : 10px;
+  margin-bottom : 15px;
+}
+
+.search-bar{
+  margin-bottom : 15px;
+}
+
+
+.btn-seach-bar{
+  color: white;
+  padding: 6px 24px;
+  border-radius: 4px;
+  background: #0B3948;
+  transition: background 0.3s ease;
+}
+
+.btn-flat {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #0B3948;
+  transition: background 0.3s ease;
+}
+
+.btn-flat:hover {
+  background: #62BBC1;
+  color: white;
+}
