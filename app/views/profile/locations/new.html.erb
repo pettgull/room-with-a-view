@@ -7,15 +7,13 @@
       <%= f.input :address, placeholder: "Add your views address" %>
       <%= f.input :photo %>
       <%= f.input :photo_cache, as: :hidden %>
-      <%= f.input :start_date, label: "From when can you rent out your view" %>
-      <%= f.input :end_date, label: "Until when can you rent out your view" %>
       <%= f.input :description, placeholder: "Add a description of your view" %>
       <%= f.input :hourly_rate, placeholder: "Add your rate"%>
       <%= f.input :commercial_use %>
       <%= f.input :monument %>
       <%= f.input :landscape %>
       <div class="row justify-content-center">
-        <%= f.button :submit, class: 'btn btn-flat' %>
+        <%= f.button :submit, "Create view", class: 'btn btn-flat' %>
       </div>
     <% end %>
   </div>
