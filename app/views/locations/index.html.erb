@@ -1,5 +1,6 @@
 <div class="index">
   <div class="cards-container">
+    <h4 class="title">More Than <%= Location.count %> Viuz, explore them</h4>
     <div class="search-container">
       <div class="search-bar">
       <%= form_tag locations_path, method: :get do %>
@@ -10,8 +11,6 @@
       <%= submit_tag "Search", class: "btn btn-flat" %>
       </div>
       <% end %>
-
-      <h4 class="title">More Than <%= Location.count %> Viuz, explore them</h4>
       <% @locations.each do |element| %>
       <div class="single-card">
         <div class="single-card-image">

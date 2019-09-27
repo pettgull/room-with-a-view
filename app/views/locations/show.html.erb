@@ -33,7 +33,7 @@
     <p> from: <%= @location.start_date%></p>
     <p class="px-2 m-0"> to: <%= @location.end_date %></p>
   </div>
-  <h2 class=""><%= @location.hourly_rate %>NOK</h2>
+  <h2 class=""><%= @location.hourly_rate %> euros</h2>
   <div class="form">
     <%= simple_form_for [@location, @booking] do |f| %>
     <div class="col-auto">
