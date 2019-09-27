@@ -1,32 +1,45 @@
-<div class="container bg-secondary text-light text-shadow mt-3 p-3 rounded">
-  <div class="row">
-    <div class="col-8">
-      <h1> <%= @booking.location.name %> </h1>
-      <h2> <%= @booking.location.address %></h2>
-      <div class="d-flex">
-        <p><%= @booking.location.user.first_name %> </p>
-        <p><%= @booking.location.user.last_name %></p>
+<div class="container pt-3">
+  <div class="container">
+    <div class="container row">
+      <div class="col-6">
+       <%=cl_image_tag @booking.location.photo, alt: "alttext",  class: "img-cover rounded" %>
+     </div>
+     <div class="col-6">
+      <div class="container">
+        <h2><%= @booking.location.name%></h2>
+        <h2><%= @booking.location.address%></h2>
+        <h2>Owner:<%= @booking.location.user.first_name%></h2>
+        <h2>Renter: <%= @booking.user.first_name%></h2>
       </div>
       <div class="d-flex">
-        <p><%= @booking.start_date %> </p>
-        <p> <%= @booking.end_date %> </p>
+        <h3><%= @booking.total_price%></h3>
+        <h3>the evening of <%= @booking.start_date%></h3>
       </div>
-      <% if current_user == @booking.location.user %>
-      <% if @booking.accepted %>
-      <div class="text-white badge badge-success">
-        <h3>booking confirmed</h3>
-      </div>
-      <% else %>
-      <%= link_to 'Accept reservation', booking_path(@booking), method: :patch, local: true, class: 'btn btn-info'  %>
-      <% end %>
-      <% end %>
-    </div>
-
+      <div class="confirmation">
+  <% if current_user == @booking.location.user %>
+  <% if @booking.accepted %>
+  <div class="text-white badge badge-success">
+    <h3>booking confirmed</h3>
   </div>
-
+  <% else %>
+  <%= link_to 'Accept reservation', booking_path(@booking), method: :patch, remote: true, class: 'btn btn-info'  %>
+  <% end %>
+  <% end %>
+</div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="container pt-3">
+  <div
+  id="map"
+  style="width: 100%"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+</div>
 </div>
 
 
 
 
-<%= link_to 'back to bookings', bookings_path %>
+

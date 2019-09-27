@@ -10,6 +10,7 @@ class BookingsController < ApplicationController
   end
 
   def show
+    set_lat_lng
   end
 
   def new
@@ -29,7 +30,6 @@ class BookingsController < ApplicationController
   end
 
   def edit
-    raise
   end
 
   def update
@@ -39,6 +39,18 @@ class BookingsController < ApplicationController
   end
 
   private
+
+  def set_lat_lng
+    @locations = []
+    @locations << @booking.location
+    @markers = @locations.map do |location|
+      {
+        lat: location.latitude,
+        lng: location.longitude,
+        image_url: helpers.asset_url('home-solid.svg')
+      }
+    end
+  end
 
   def calculate_price(rate, start_date, end_date)
     time = end_date - start_date
