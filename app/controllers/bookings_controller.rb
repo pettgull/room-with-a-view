@@ -26,6 +26,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     location = Location.find(params[:location_id])
     @booking.location = location
+<<<<<<< Updated upstream
 
     if @booking.start_date < Date.today
       flash[:notice] = "That isn't possible"
@@ -36,6 +37,12 @@ class BookingsController < ApplicationController
       flash[:notice] = "Sorry, the location is already booked."
       render :new
     end
+=======
+    if @booking.start_date > @booking.end_date || @booking.start_date <= Date.today
+      render :new
+    else
+      @booking.save
+>>>>>>> Stashed changes
 
     if @booking.save
       redirect_to booking_path(@booking), notice: 'You requested a new booking'
