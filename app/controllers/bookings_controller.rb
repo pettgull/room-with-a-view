@@ -10,7 +10,13 @@ class BookingsController < ApplicationController
   end
 
   def show
+    set_lat_lng
   end
+
+  # def is_available
+  #   where = "location = ? AND bookings.start_date <= ? AND bookings.end_date >= ?"
+  #   Location.joins(:bookings).where(where, params[end_date], params[start_date]).any?
+  # end
 
   def new
     @booking = Booking.new
@@ -24,6 +30,15 @@ class BookingsController < ApplicationController
     location = Location.find(params[:location_id])
     @booking.location = location
     @booking.start_date = @booking.start_date.change(:min => 0)
+    if @booking.start_date < Date.today
+      flash[:notice] = "That isn't possible"
+      render :new
+    # elsif location.available?
+    #   @booking.save
+    # else
+    #   flash[:notice] = "Sorry, the location is already booked."
+    #   render :new
+    end
     if @booking.save
       redirect_to booking_path(@booking), notice: 'You requested a new booking'
     else
@@ -32,7 +47,6 @@ class BookingsController < ApplicationController
   end
 
   def edit
-    raise
   end
 
   def update
@@ -42,6 +56,18 @@ class BookingsController < ApplicationController
   end
 
   private
+
+  def set_lat_lng
+    @locations = []
+    @locations << @booking.location
+    @markers = @locations.map do |location|
+      {
+        lat: location.latitude,
+        lng: location.longitude,
+        image_url: helpers.asset_url('home-solid.svg')
+      }
+    end
+  end
 
   def calculate_price(rate, start_date, end_date)
     time = end_date - start_date
