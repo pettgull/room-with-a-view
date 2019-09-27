@@ -2,15 +2,20 @@
   <div class="cards-container">
     <h4 class="title">More Than <%= Location.count %> Viuz, explore them</h4>
     <div class="search-container">
-      <div class="search-bar">
+      <h4 class="title pt-3 pb-2 p-0">More Than <%= Location.count %> Viuz, explore them</h4>
+      <div class="d-flex justify-content-around mt-4">
+      <div class="search-bar flex-grow-1">
       <%= form_tag locations_path, method: :get do %>
       <%= text_field_tag :query,
       params[:query],
-      class: "form-control", placeholder: "Find a location" %>
+      class: "form-control" , placeholder: "Find a location" %>
       </div>
-      <%= submit_tag "Search", class: "btn btn-flat" %>
+      <div class="pl-2">
+      <%= submit_tag "Search", class: "btn btn-seach-bar" %>
+      </div>
       </div>
       <% end %>
+      </div>
       <% @locations.each do |element| %>
       <div class="single-card">
         <div class="single-card-image">
