@@ -8,8 +8,8 @@
         <p><%= @booking.location.user.last_name %></p>
       </div>
       <div class="d-flex">
-        <p><%= @booking.start_date %> </p>
-        <p> <%= @booking.end_date %> </p>
+        <p><%= @booking.start_date.strftime('%e %m %Y - %H %p') %> </p><p> || </p>
+        <p> <%= @booking.end_date.strftime('%e %m %Y - %H %p')%> </p>
       </div>
       <% if current_user == @booking.location.user %>
       <% if @booking.accepted %>
