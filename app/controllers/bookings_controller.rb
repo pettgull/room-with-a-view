@@ -23,10 +23,13 @@ class BookingsController < ApplicationController
   end
 
   def create
+
+    # @booking.end_date = @booking.end_date.change(:min => 0)
     @booking = Booking.new(strong_params)
     @booking.user = current_user
     location = Location.find(params[:location_id])
     @booking.location = location
+    @booking.start_date = @booking.start_date.change(:min => 0)
     if @booking.start_date < Date.today
       flash[:notice] = "That isn't possible"
       render :new

@@ -13,7 +13,8 @@
       </div>
       <div class="d-flex">
         <h3><%= @booking.total_price%></h3>
-        <h3>the evening of <%= @booking.start_date%></h3>
+        <h3><%= @booking.start_date.strftime('%e %m %Y - %H %p') %> </h3> || <h3>
+        <%= @booking.end_date.strftime('%e %m %Y - %H %p')%></h3>
       </div>
       <div class="confirmation">
   <% if current_user == @booking.location.user %>

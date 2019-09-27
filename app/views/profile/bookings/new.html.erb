@@ -4,8 +4,8 @@
   </div>
   <%= simple_form_for [:profile, @booking] do |f| %>
   <div class="col-auto">
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
+    <%= f.input :start_date , discard_minute: true %>
+    <%= f.input :end_date , discard_minute: true %>
     <div class="row justify-content-center">
     <%= f.button :submit, class: 'btn btn-flat' %>
   </div>
