@@ -1,8 +1,18 @@
 class LocationsController < ApplicationController
 
   def index
-    @locations = Location.geocoded
-    # @locations = Location.all
+    if params[:query].present?
+      @locations = Location.where("address ILIKE ?", "%#{params[:query]}%").geocoded
+    else
+      @locations = Location.geocoded
+    end
+
+
+
+
+
+    # @locations = Location.geocoded
+    # # @locations = Location.all
 
     @markers = @locations.map do |location|
       {
