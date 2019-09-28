@@ -1,43 +1,55 @@
-<div class="index">
+<div class="booking-conf">
 
-  <div class="cards-container col-6 mt-4">
+  <div class="cards-container-booking-conf  col-6 mt-4">
     <h1>Your Booking :</h1>
-    <div class="single-card">
-      <div class="single-card-image">
+    <div class="single-card-booking-conf ">
+      <div class="row">
+        <div class="single-card-image-booking-conf">
 
-        <%=cl_image_tag @booking.location.photo%>
-      </div>
-      <div class="single-card-content">
-        <h4 class="card-title"> <%= @booking.location.name %></h4>
-        <h5 class="card-adress"> <%= @booking.location.address %></h5>
-        <h5 class="card-adress"> Owner:<%= @booking.location.user.first_name%></h5>
-        <h5 class="card-adress"> Renter: <%= @booking.user.first_name%>></h5>
-        <h5 class="card-hourly-rate"> <%= @booking.total_price%></h5>
-        <h5 class="card-hourly-rate"> <%= @booking.start_date.strftime('%e %m %Y - %H %p') %>  | |
-          <%= @booking.end_date.strftime('%e %m %Y - %H %p')%></h5>
+          <%=cl_image_tag @booking.location.photo%>
         </div>
       </div>
-      <div class="confirmation">
-        <% if current_user == @booking.location.user %>
-        <% if @booking.accepted %>
-        <div class="text-white badge badge-success">
-          <h3>booking confirmed</h3>
+      <div class="row">
+        <div class="card-information">
+          <div class="single-card-content-booking-conf ">
+            <h4 class="card-title-booking-conf "> <%= @booking.location.name %></h4>
+            <h5 class="card-adress"> <%= @booking.location.address %></h5>
+            <h5 class="card-adress"> Owner: <%= @booking.location.user.first_name%></h5>
+            <h5 class="card-adress"> Renter: <%= @booking.user.first_name%></h5>
+
+            <div class="hourly-rate">
+              <h5 class="card-hourly-rate-booking-conf "> Price: <%= @booking.total_price%> euros</h5>
+
+            </div>
+          </div>
+
+          <div class="confirmation-booking-conf ">
+            <h5 class="card-hourly-rate-booking-conf ">
+             start: <%= @booking.start_date.strftime('%e %m %Y - %H %p') %><!-- </br> -->
+             End: <%= @booking.end_date.strftime('%e %m %Y - %H %p')%></h5>
+             <% if current_user == @booking.location.user %>
+             <% if @booking.accepted %>
+
+             <div class="text-white badge badge-success">
+              <h5>booking confirmed</h5>
+            </div>
+
+            <% else %>
+            <%= link_to 'Accept reservation', booking_path(@booking), method: :patch, remote: true, class: 'btn btn-info'  %>
+            <% end %>
+            <% end %>
+          </div>
+
         </div>
-        <% else %>
-        <%= link_to 'Accept reservation', booking_path(@booking), method: :patch, remote: true, class: 'btn btn-info'  %>
-        <% end %>
-        <% end %>
       </div>
     </div>
-    <div id="map"
-  style="width: 600px"
+  </div>
+  <div id="map"
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-</div>
   </div>
-
-
 </div>
+
 
 
 

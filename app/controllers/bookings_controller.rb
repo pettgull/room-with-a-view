@@ -23,26 +23,26 @@ class BookingsController < ApplicationController
   end
 
   def create
-
-    # @booking.end_date = @booking.end_date.change(:min => 0)
     @booking = Booking.new(strong_params)
     @booking.user = current_user
     location = Location.find(params[:location_id])
     @booking.location = location
     @booking.start_date = @booking.start_date.change(:min => 0)
-    if @booking.start_date < Date.today
+    @booking.end_date = @booking.end_date.change(:min => 0)
+    @booking.total_price = calculate_price(@booking.location, @booking)
+    if @booking.start_date < Date.today || @booking.start_date > @booking.end_date
       flash[:notice] = "That isn't possible"
-      render :new
-    # elsif location.available?
-    #   @booking.save
-    # else
-    #   flash[:notice] = "Sorry, the location is already booked."
-    #   render :new
+
+    elsif location.available?(start_date, end_date)
+      @booking.save
+    else
+      flash[:notice] = "Sorry, the location is already booked."
+      render :new_booking
     end
     if @booking.save
       redirect_to booking_path(@booking), notice: 'You requested a new booking'
     else
-      render :new
+      render :new_booking
     end
   end
 
@@ -69,9 +69,9 @@ class BookingsController < ApplicationController
     end
   end
 
-  def calculate_price(rate, start_date, end_date)
-    time = end_date - start_date
-    return rate * time
+  def calculate_price(location, booking)
+    time = (booking.end_date - booking.start_date)/3600
+    return location.hourly_rate * time
   end
 
   def set_booking

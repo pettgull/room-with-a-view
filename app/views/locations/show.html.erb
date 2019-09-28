@@ -28,10 +28,9 @@
    </div>
  </div>
  <div class="col-6">
-  <p>available </p>
   <div id="availability" class="d-flex">
-    <p> from: <%= @location.start_date%></p>
-    <p class="px-2 m-0"> to: <%= @location.end_date %></p>
+    <p> from: <%= @location.start_date.strftime('%e %m %Y - %H %p') %></p>
+    <p class="px-2 m-0"> to: <%= @location.end_date.strftime('%e %m %Y - %H %p') %></p>
   </div>
   <h2 class=""><%= @location.hourly_rate %> euros</h2>
   <div class="form">
@@ -47,19 +46,6 @@
   </div>
 </div>
 
-
-<div class="container">
-  <div class="row d-flex justify-content-center">
-    <div class="col-6">
-      <div class="container p-3">
-      </div>
-      <div class="col-6">
-        <h3 class="text-center pt-3">make a reservation</h3>
-        <div class="container">
-
-        </div>
-      </div>
-    </div>
 
 
 
