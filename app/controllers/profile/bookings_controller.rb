@@ -25,12 +25,12 @@ class Profile::BookingsController < ApplicationController
       @booking.save
     else
       flash[:notice] = "Sorry, the location is already booked."
-      render :new_booking
+      render :new
     end
     if @booking.save
       redirect_to booking_path(@booking), notice: 'You requested a new booking'
     else
-      render :new_booking
+      render :new
     end
     if @booking.save
       redirect_to bookings_path(@booking), notice: 'You requested a new booking'
