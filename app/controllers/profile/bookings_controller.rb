@@ -17,22 +17,31 @@ class Profile::BookingsController < ApplicationController
     @booking = Booking.new(strong_params)
     @booking.user = current_user
     @booking.location = params[:location_id]
-    raise
-    if @booking.save
-      raise
-      redirect_to bookings_path(@booking), notice: 'You requested a new booking'
+    @booking.total_price = calculate_price(@booking.location, @booking)
+    if @booking.start_date < Date.today || @booking.start_date > @booking.end_date
+      flash[:notice] = "That isn't possible"
+
+    elsif location.available?
+      @booking.save
     else
-      raise
-      render :new
+      flash[:notice] = "Sorry, the location is already booked."
+      render :new_booking
+    end
+    if @booking.save
+      redirect_to booking_path(@booking), notice: 'You requested a new booking'
+    else
+      render :new_booking
+    end
+    if @booking.save
+      redirect_to bookings_path(@booking), notice: 'You requested a new booking'
     end
   end
 
   private
 
-  def calculate_price
-    rate = params[:rate]
-    time = (params[:start_date] - params[:start_date])
-    return rate * time
+  def calculate_price(location, booking)
+    time = (booking.end_date - booking.start_date)/3600
+    return location.hourly_rate * time
   end
 
   def set_booking
