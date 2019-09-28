@@ -33,7 +33,7 @@ class BookingsController < ApplicationController
     if @booking.start_date < Date.today || @booking.start_date > @booking.end_date
       flash[:notice] = "That isn't possible"
 
-    elsif location.available?(start_date, end_date)
+    elsif location.available?(@booking.start_date, @booking.end_date)
       @booking.save
     else
       flash[:notice] = "Sorry, the location is already booked."
